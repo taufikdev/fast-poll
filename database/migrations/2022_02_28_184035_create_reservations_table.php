@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('Id_Affect');
             $table->foreign('Id_Affect')->references('Id_Affect')->on('affectations');
             $table->unsignedBigInteger('Id_Student');
-            $table->foreign('Id_Student')->references('Id_Profil')->on('profils');
+            $table->foreign('Id_Student')->references('Id_Acc')->on('accounts');
             $table->date('Date_Time');
             $table->timestamps();
         });

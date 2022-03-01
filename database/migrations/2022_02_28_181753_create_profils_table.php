@@ -19,12 +19,8 @@ return new class extends Migration
             $table->foreign('Id_Acc')->references('Id_Acc')->on('accounts');
             $table->unsignedBigInteger('Id_Add');
             $table->foreign('Id_Add')->references('Id_Add')->on('address');
-            $table->string('First_Name');
-            $table->string('Last_Name');
             $table->string('Description');
             $table->string('Experience');
-            $table->binary('photo');
-
             $table->timestamps();
         });
     }
