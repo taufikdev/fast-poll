@@ -9,7 +9,7 @@ class Account extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'First_Name' ,
+            'First_Name' ,
             'Last_Name',
             'Phon',
             'Type',
@@ -18,7 +18,6 @@ class Account extends Model
     ];
     protected $hidden = ['password'];
     protected $primaryKey = 'Id_Acc';
-    // protected $connection = 'mysql';
-    // protected $table = 'accounts';
+    
 
 }

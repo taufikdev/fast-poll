@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Cour;
 use Illuminate\Http\Request;
-use App\Models\Account;
-use Illuminate\Support\Facades\Hash;
-class AccountController extends Controller
+
+class CoursController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +13,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $accounts=Account::all();
-        return $accounts->tojson(JSON_FORCE_OBJECT );
-        
-       
+        $Cours=Cour::all();
+        return $Cours->tojson(JSON_FORCE_OBJECT );
     }
 
     /**
@@ -28,15 +25,11 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        return Account::create([
-            'First_Name' => $request['First_Name'],
-            'Last_Name' => $request['Last_Name'],
-            'Phon' => $request['Phon'],
-            'Type' => $request['Type'],
-            'Mail' => $request['Mail'],
-            'password' => Hash::make($request['password']),
+        // return 'jfhskf';
+        return Cour::create([
+            'Title' => $request['Title'],
+            
         ]);
-      
     }
 
     /**
@@ -47,9 +40,9 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        $account=Account::findOrFail($id);
+        $cour=Cour::findOrFail($id);
         
-        return $account->tojson(JSON_FORCE_OBJECT );
+        return $cour->tojson(JSON_FORCE_OBJECT );
     }
 
     /**
@@ -61,15 +54,11 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $account=Account::findOrFail($id);
+        $cour=Cour::findOrFail($id);
 
-        $account->update([
-            'First_Name' => $request['First_Name'],
-            'Last_Name' => $request['Last_Name'],
-            'Phon' => $request['Phon'],
-            'Type' => $request['Type'],
-            'Mail' => $request['Mail'],
-            'password' =>  Hash::make($request['password']),
+        $cour->update([
+            'Title' => $request['Title'],
+            
         ]);
        // return $account->tojson(JSON_FORCE_OBJECT );
         return 'updated';
@@ -83,10 +72,9 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        $account=Account::findOrFail($id);
-        $account->delete();
+        $cour=Cour::findOrFail($id);
+        $cour->delete();
 
         return 'deleted';
-        
     }
 }
