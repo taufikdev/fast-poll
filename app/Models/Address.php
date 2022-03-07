@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cour extends Model
+class Address extends Model
 {
     use HasFactory;
+    protected $table='address';
+    protected $primaryKey='id_add';
     protected $fillable = [
-        'title',      
+        'iille' ,
+        'zipcode',
+        'long',
+        'lat',     
 ];
-
-protected $primaryKey = 'id_cour';
 }

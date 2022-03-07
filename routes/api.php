@@ -18,5 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiresource('account','accountController');
-Route::apiresource('cour','CoursController');
+Route::apiresource('/account','accountController');
+Route::apiresource('/cour','CourController');
+Route::apiresource('/address','addressController');
+Route::apiresource('/profil','ProfileController');

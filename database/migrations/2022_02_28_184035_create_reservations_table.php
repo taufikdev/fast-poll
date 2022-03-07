@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reservations', function (Blueprint $table) {
-            $table->bigIncrements('Id_resevration');
-            $table->unsignedBigInteger('Id_Affect');
-            $table->foreign('Id_Affect')->references('Id_Affect')->on('affectations');
-            $table->unsignedBigInteger('Id_Student');
-            $table->foreign('Id_Student')->references('Id_Acc')->on('accounts');
-            $table->date('Date_Time');
+            $table->bigIncrements('id_resevration');
+            $table->unsignedBigInteger('id_affect');
+            $table->foreign('id_affect')->references('id_affect')->on('affectations');
+            $table->unsignedBigInteger('id_student');
+            $table->foreign('id_student')->references('id_acc')->on('accounts');
+            $table->date('date_time');
             $table->timestamps();
         });
     }

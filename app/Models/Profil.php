@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cour extends Model
+class Profil extends Model
 {
     use HasFactory;
+  
+    protected $primaryKey='Id_Profil';
     protected $fillable = [
-        'title',      
+        'id_acc' ,
+        'id_add',
+        'description',
+        'experience',     
 ];
 
-protected $primaryKey = 'id_cour';
 }

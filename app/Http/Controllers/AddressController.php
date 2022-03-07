@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Cour;
+use App\Models\Address;
 use Illuminate\Http\Request;
 
-class CoursController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class CoursController extends Controller
      */
     public function index()
     {
-        $Cours=Cour::all();
-        return $Cours->tojson(JSON_FORCE_OBJECT );
+        $address=Address::all();
+        return $address->tojson(JSON_FORCE_OBJECT );
     }
 
     /**
@@ -25,9 +25,11 @@ class CoursController extends Controller
      */
     public function store(Request $request)
     {
-        // return 'jfhskf';
-        return Cour::create([
-            'Title' => $request['Title'],
+        return Address::create([
+            'ville' => $request['ville'],
+            'zipcode' => $request['zipcode'],
+            'long' => $request['long'],
+            'lat' => $request['lat'],
             
         ]);
     }
@@ -40,9 +42,9 @@ class CoursController extends Controller
      */
     public function show($id)
     {
-        $cour=Cour::findOrFail($id);
+        $address=Address::findOrFail($id);
         
-        return $cour->tojson(JSON_FORCE_OBJECT );
+        return $address->tojson(JSON_FORCE_OBJECT );
     }
 
     /**
@@ -54,16 +56,18 @@ class CoursController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cour=Cour::findOrFail($id);
-
-        $cour->update([
-            'Title' => $request['Title'],
+        $address=Address::findOrFail($id);
+        
+        $address->update([
+            'ville' => $request['ville']      ?$request['ville']: $address['ville'],
+            'zipcode' => $request['zipcode']  ?$request['zipcode']: $address['zipcode'],
+            'long' => $request['long']        ?$request['long']: $address['long'],
+            'lat' => $request['lat']          ?$request['lat']: $address['lat'],
             
         ]);
-       // return $account->tojson(JSON_FORCE_OBJECT );
-        return 'updated';
+        return $address->tojson(JSON_FORCE_OBJECT );
     }
-
+ 
     /**
      * Remove the specified resource from storage.
      *
@@ -72,9 +76,7 @@ class CoursController extends Controller
      */
     public function destroy($id)
     {
-        $cour=Cour::findOrFail($id);
-        $cour->delete();
-
-        return 'deleted';
+        $address=Address::findOrFail($id);
+        $address->delete();
     }
 }

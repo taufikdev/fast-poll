@@ -14,15 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('affectations', function (Blueprint $table) {
-            $table->bigincrements('Id_Affect');
-            
-            $table->unsignedBigInteger('Id_Profil');
-            $table->foreign('Id_Profil')->references('Id_Profil')->on('profils');
-            $table->unsignedBigInteger('Id_Cours');
-            $table->foreign('Id_Cours')->references('Id_Cours')->on('cours');
-            $table->unsignedBigInteger('Id_Niveau');
-            $table->foreign('Id_Niveau')->references('Id_Niveau')->on('niveaus');
-            $table->integer('Price');
+            $table->bigincrements('id_affect');           
+            $table->unsignedBigInteger('id_profil');
+            $table->foreign('id_profil')->references('id_profil')->on('profils');
+            $table->unsignedBigInteger('id_cour');
+            $table->foreign('id_cour')->references('id_cour')->on('cours');
+            $table->unsignedBigInteger('id_niveau');
+            $table->foreign('id_niveau')->references('id_niveau')->on('niveaus');
+            $table->integer('price');
             $table->timestamps();
         });
     }

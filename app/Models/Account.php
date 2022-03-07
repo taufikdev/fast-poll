@@ -9,15 +9,16 @@ class Account extends Model
 {
     use HasFactory;
     protected $fillable = [
-            'First_Name' ,
-            'Last_Name',
-            'Phon',
-            'Type',
-            'Mail',
+            'first_name' ,
+            'last_name',
+            'phon',
+            'type',
+            'mail',
+            'photo',
             'password',
     ];
     protected $hidden = ['password'];
-    protected $primaryKey = 'Id_Acc';
+    protected $primaryKey = 'id_acc';
     
 
 }
