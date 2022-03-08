@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->bigIncrements('Id_Acc');    
-            $table->string('First_Name');
-            $table->string('Last_Name');
-            $table->string('Phon');
-            $table->binary('photo');
-            $table->string('Mail')->unique();
+            $table->bigIncrements('id_acc');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('phone');
+            $table->string('photo')->nullable();
+            $table->string('mail')->unique();
             $table->string('password');
-            $table->enum('Type', ['Admin', 'Prof']);
+            $table->enum('type', ['Admin', 'Prof']);
             $table->timestamps();
         });
     }

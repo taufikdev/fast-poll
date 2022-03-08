@@ -8,16 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     use HasFactory;
-    protected $fillable = [
-            'First_Name' ,
-            'Last_Name',
-            'Phon',
-            'Type',
-            'Mail',
-            'password',
-    ];
-    protected $hidden = ['password'];
-    protected $primaryKey = 'Id_Acc';
+
+    protected $primaryKey ='id_acc';
     
+    // protected $table = 'accounts';
+    protected $fillable = [
+            'id_acc',
+            'first_name' ,
+            'last_name' ,
+            'phone',
+            'photo' ,
+            'type' ,
+            'mail' ,
+            'password'
+    ];
 
 }

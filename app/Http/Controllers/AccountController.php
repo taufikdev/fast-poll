@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Account;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
 class AccountController extends Controller
-{
+{   
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +15,18 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $accounts=Account::all();
-        return $accounts->tojson(JSON_FORCE_OBJECT );
-        
-       
+        $accounts = Account::all();
+        return $accounts->tojson(JSON_FORCE_OBJECT);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -29,64 +38,61 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         return Account::create([
-            'First_Name' => $request['First_Name'],
-            'Last_Name' => $request['Last_Name'],
-            'Phon' => $request['Phon'],
-            'Type' => $request['Type'],
-            'Mail' => $request['Mail'],
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
+            'phone' => $request['phone'],
+            'photo' => $request['photo'],
+            'type' => $request['type'],
+            'mail' => $request['mail'],
             'password' => Hash::make($request['password']),
         ]);
-      
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Account  $account
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $account=Account::findOrFail($id);
         
-        return $account->tojson(JSON_FORCE_OBJECT );
+        $account = Account::findOrFail($id);
+        // dd($account);
+        return $account->tojson(JSON_FORCE_OBJECT);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Account  $account
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Account $account)
+    {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Account $account)
     {
-        $account=Account::findOrFail($id);
-
-        $account->update([
-            'First_Name' => $request['First_Name'],
-            'Last_Name' => $request['Last_Name'],
-            'Phon' => $request['Phon'],
-            'Type' => $request['Type'],
-            'Mail' => $request['Mail'],
-            'password' =>  Hash::make($request['password']),
-        ]);
-       // return $account->tojson(JSON_FORCE_OBJECT );
-        return 'updated';
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Account $account)
     {
-        $account=Account::findOrFail($id);
-        $account->delete();
-
-        return 'deleted';
-        
+        //
     }
 }
