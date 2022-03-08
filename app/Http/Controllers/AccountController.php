@@ -22,15 +22,14 @@ class AccountController extends Controller
        
     }
 
-    //test 
     //     public function useapi(){
     // $accounts=Http::get('http://api.meteo-concept.com/api/ephemeride/0?token=7e2e4813cc314004491ac5f5a5e9383296af505798994a137b48637ed8ea7578
- //dd($accounts);
+
     // ');
     
-    dd($accounts);
+    // dd($accounts);
 
-        }
+    //     }
     /**
      * Store a newly created resource in storage.
      *
@@ -75,18 +74,21 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $account=Account::findOrFail($id);
-     //   $path= $request->file('photo')->store('Docs');
         
-        $account->update([
-            'first_name' => $request['first_name']?$request['first_name']: $account['first_name'],
-            'last_name' => $request['last_name']  ?$request['last_name']: $account['last_name'],
-            'Phon' => $request['Phon']            ?$request['Phon']: $account['Phon'],
-            'type' => $request['type']            ?$request['type']: $account['type'],
-            'mail' => $request['mail']            ?$request['mail']: $account['mail'],
-            'password' => $request['password']    ?Hash::make($request['password']): Hash::make($account['password']),
-        ]);
-        return $account->tojson(JSON_FORCE_OBJECT );
+        $account=Account::findOrFail($id);
+       if($request->hasFile('photo'))
+       dd('ghh');
+        else
+        dd('ttttt');
+        // $account->update([
+        //     'first_name' => $request['first_name']?$request['first_name']: $account['first_name'],
+        //     'last_name' => $request['last_name']  ?$request['last_name']: $account['last_name'],
+        //     'Phon' => $request['Phon']            ?$request['Phon']: $account['Phon'],
+        //     'type' => $request['type']            ?$request['type']: $account['type'],
+        //     'mail' => $request['mail']            ?$request['mail']: $account['mail'],
+        //     'password' => $request['password']    ?Hash::make($request['password']): Hash::make($account['password']),
+        // ]);
+        // return $account->tojson(JSON_FORCE_OBJECT );
         
     }
 
